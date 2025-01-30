@@ -1,0 +1,121 @@
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-weight: 900;
+    font-style: italic;
+    color: black;
+    white-space: nowrap;
+    z-index: -2;
+}
+
+.background-container h1 {
+    margin: 0;
+}
+
+.background-container.rotated {
+    transform: rotate(-45deg);
+}
+
+.background-container.reference {
+    z-index: -2;
+}
+
+.background-container .outer {
+    -webkit-text-stroke: 12px #637329;
+    color: #637329;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.background-container .inner {
+    -webkit-text-stroke: 0px #00000000;
+    color: #F5F5E4;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.background-black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+}
+
+.background-shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px) blur(3px);
+}
+
+button.loading {
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.6s ease;
+    position: relative;
+}
+
+button.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #F5F5E4;
+    border-color: #637329!important;
+    transition: width 0.6s ease;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+button.loading {
+    transition: transform 0.1s ease, box-shadow 0.1s linear;
+}
+
+.button-container, .button-container button h6  {
+    width: 50%;
+    text-decoration: none;
+    font-family: "noto-sans-mono", monospace;
+}
+
+.button-container button {
+    width: calc(100% - 32px);
+}
+
+button.loading:hover {
+    transform: scale(1.05);
+    box-shadow: 8px rgba(0, 0, 0, 0.2), 8px rgba(0, 0, 0, 0.2);
+}
+
+button.loading:hover::before {
+    width: 100%;
+}
+
+button.loading * {
+    position: relative;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 900px) {
+    .flex.narrow.footer {
+        display: none;
+    }
+    .flex {
+        backdrop-filter: none;
+    }
+    .button-container {
+        width: 75%;
+    }
+}
