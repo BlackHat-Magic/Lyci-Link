@@ -10,7 +10,7 @@
     <div class="fixed inset-0 bg-white -z-3"></div>
 
     <!-- Diagonal repeated text (reference top layer for depth) -->
-    <div class="background-container reference fixed inset-0 -z-2">
+    <div class="fixed inset-0 -z-2">
         <h1
             class="select-none font-extrabold italic text-[10rem] leading-none text-lyci-inner opacity-0"
             id="reference"
@@ -30,12 +30,12 @@
             <h1
                 class="text-stroke-lyci select-none font-extrabold italic leading-none fixed m-0 text-[7rem] md:text-[9rem] lg:text-[11rem]"
                 :style="{
-                    top: `${85 * (i - 2)}px`,
-                    left: `${(i + 1) * -1 * 85 - i % 3 * 75}px`
+                    top: `${160 * (i - 3)}px`,
+                    left: `${(i + 1) * -1 * 40 - (i % 3) * 110}px`
                 }"
             >
                 <template x-for="j in repeat_number()">
-                    <span class="pr-4">LyciBeri</span>
+                    <span class="inline-block mr-12">LyciBeri</span>
                 </template>
             </h1>
         </template>
@@ -45,12 +45,12 @@
             <h1
                 class="text-no-stroke text-lyci-inner select-none font-extrabold italic leading-none fixed m-0 text-[7rem] md:text-[9rem] lg:text-[11rem]"
                 :style="{
-                    top: `${85 * (i - 2)}px`,
-                    left: `${(i + 1) * -1 * 85 - i % 3 * 75}px`
+                    top: `${160 * (i - 3)}px`,
+                    left: `${(i + 1) * -1 * 40 - (i % 3) * 110}px`
                 }"
             >
                 <template x-for="j in repeat_number()">
-                    <span class="pr-4">LyciBeri</span>
+                    <span class="inline-block mr-12">LyciBeri</span>
                 </template>
             </h1>
         </template>
@@ -87,11 +87,7 @@
 
                 <!-- Buttons -->
                 <div class="mt-4 flex w-full flex-col items-center gap-3">
-                    <!-- Reusable button pattern:
-                             - group for hover state
-                             - absolute fill layer scales from left on hover
-                             - text changes color on hover for contrast
-                    -->
+                    <!-- YouTube -->
                     <a
                         class="w-full md:w-3/4 no-underline"
                         href="{{ url_for('epmain.youtube') }}"
@@ -99,7 +95,7 @@
                     >
                         <button
                             type="button"
-                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none"
+                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none cursor-pointer"
                         >
                             <!-- Fill -->
                             <span
@@ -107,7 +103,9 @@
                             ></span>
                             <!-- Content -->
                             <span
-                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-inner group-hover:text-black"
+                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3
+                                text-lyci-stroke transition-colors duration-200
+                                group-hover:text-nord-background"
                             >
                                 <h6 class="col-span-3 text-left text-xl md:text-2xl">></h6>
                                 <h6 class="col-span-9 text-left">YouTube!</h6>
@@ -115,6 +113,7 @@
                         </button>
                     </a>
 
+                    <!-- Twitter -->
                     <a
                         class="w-full md:w-3/4 no-underline"
                         href="{{ url_for('epmain.twitter') }}"
@@ -122,13 +121,13 @@
                     >
                         <button
                             type="button"
-                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none"
+                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none cursor-pointer"
                         >
                             <span
                                 class="absolute inset-0 z-0 origin-left scale-x-0 transform bg-lyci-inner transition-transform duration-700 ease-out group-hover:scale-x-100"
                             ></span>
                             <span
-                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-inner group-hover:text-black"
+                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-stroke transition-colors duration-200 group-hover:text-nord-background"
                             >
                                 <h6 class="col-span-3 text-left text-xl md:text-2xl">></h6>
                                 <h6 class="col-span-9 text-left">Twitter!</h6>
@@ -136,6 +135,7 @@
                         </button>
                     </a>
 
+                    <!-- Twitch -->
                     <a
                         class="w-full md:w-3/4 no-underline"
                         href="{{ url_for('epmain.twitch') }}"
@@ -143,13 +143,13 @@
                     >
                         <button
                             type="button"
-                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none"
+                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none cursor-pointer"
                         >
                             <span
                                 class="absolute inset-0 z-0 origin-left scale-x-0 transform bg-lyci-inner transition-transform duration-700 ease-out group-hover:scale-x-100"
                             ></span>
                             <span
-                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-inner group-hover:text-black"
+                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-stroke transition-colors duration-200 group-hover:text-nord-background"
                             >
                                 <h6 class="col-span-3 text-left text-xl md:text-2xl">></h6>
                                 <h6 class="col-span-9 text-left">Twitch!</h6>
@@ -157,6 +157,7 @@
                         </button>
                     </a>
 
+                    <!-- Discord -->
                     <a
                         class="w-full md:w-3/4 no-underline"
                         href="{{ url_for('epmain.discord') }}"
@@ -164,13 +165,13 @@
                     >
                         <button
                             type="button"
-                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none"
+                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none cursor-pointer"
                         >
                             <span
                                 class="absolute inset-0 z-0 origin-left scale-x-0 transform bg-lyci-inner transition-transform duration-700 ease-out group-hover:scale-x-100"
                             ></span>
                             <span
-                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-inner group-hover:text-black"
+                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-stroke transition-colors duration-200 group-hover:text-nord-background"
                             >
                                 <h6 class="col-span-3 text-left text-xl md:text-2xl">></h6>
                                 <h6 class="col-span-9 text-left">Discord!</h6>
@@ -178,6 +179,7 @@
                         </button>
                     </a>
 
+                    <!-- Bluesky -->
                     <a
                         class="w-full md:w-3/4 no-underline"
                         href="{{ url_for('epmain.bluesky') }}"
@@ -185,13 +187,13 @@
                     >
                         <button
                             type="button"
-                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none"
+                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none cursor-pointer"
                         >
                             <span
                                 class="absolute inset-0 z-0 origin-left scale-x-0 transform bg-lyci-inner transition-transform duration-700 ease-out group-hover:scale-x-100"
                             ></span>
                             <span
-                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-inner group-hover:text-black"
+                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-stroke transition-colors duration-200 group-hover:text-nord-background"
                             >
                                 <h6 class="col-span-3 text-left text-xl md:text-2xl">></h6>
                                 <h6 class="col-span-9 text-left">Bluesky!</h6>
@@ -199,6 +201,7 @@
                         </button>
                     </a>
 
+                    <!-- TikTok -->
                     <a
                         class="w-full md:w-3/4 no-underline"
                         href="{{ url_for('epmain.tiktok') }}"
@@ -206,13 +209,13 @@
                     >
                         <button
                             type="button"
-                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none"
+                            class="group relative w-full overflow-hidden rounded-xl border-2 border-lyci-stroke bg-transparent font-mono text-lg tracking-wide transition-transform duration-100 hover:scale-[1.02] focus:outline-none cursor-pointer"
                         >
                             <span
                                 class="absolute inset-0 z-0 origin-left scale-x-0 transform bg-lyci-inner transition-transform duration-700 ease-out group-hover:scale-x-100"
                             ></span>
                             <span
-                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-inner group-hover:text-black"
+                                class="relative z-10 grid grid-cols-12 items-center gap-2 px-5 py-3 text-lyci-stroke transition-colors duration-200 group-hover:text-nord-background"
                             >
                                 <h6 class="col-span-3 text-left text-xl md:text-2xl">></h6>
                                 <h6 class="col-span-9 text-left">TikTok!</h6>
