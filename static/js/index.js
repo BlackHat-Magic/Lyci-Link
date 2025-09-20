@@ -106,7 +106,7 @@ document.addEventListener ("alpine:init", () => {
             text_width = Math.sqrt(2) / 2 * document.querySelector("#reference").getBoundingClientRect().width;
             console.log(text_width)
             smallest = Math.max(this.screen_width, this.screen_height);
-            return(Math.ceil(smallest / text_width) + 1);
+            return(Math.ceil(smallest / text_width) + 2);
         },
 
         calculate_top (i) {

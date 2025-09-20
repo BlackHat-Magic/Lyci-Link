@@ -2,4 +2,4 @@ Lyci-link
 
 ---
 
-Lorem ipsum dolor
+Carrd/Linktree, but overengineered and bespoke and probably underoptimized.
