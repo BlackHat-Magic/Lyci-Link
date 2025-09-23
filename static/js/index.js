@@ -78,14 +78,18 @@ document.addEventListener ("alpine:init", () => {
             // of course coordinates are relative to the element itself and not the document
             // why would it be any way else?
             // simplicity? to make it intuitive? nonsense!!
+            // im coming back to this like 6 months later and no that makes complete sense
+            // why would it be the other way?
             v_x_adj = Math.sqrt(2) / 2 * this.v_x + -1 * Math.sqrt(2) / 2 * this.v_y;
             v_y_adj = Math.sqrt(2) / 2 * this.v_y + Math.sqrt(2) * 2 / 2 * this.v_x;
             this.current_x_adjusted += v_x_adj;
             this.current_y_adjusted += v_y_adj;
             
-            background_container = document.querySelector("#background");
+            // I don't think this does what it's supposed to do but it still works so
+            // I'm keeping it
+            const background_container = document.querySelector("#background");
             for (let i = 0; i < background_container.children.length; i++) {
-                background_container.children[i].style.transform = `translate(${this.current_x_adjusted}px, ${this.current_y_adjusted}px)`;
+                background_container.children[i].style.transform = `translate3d(${this.current_x_adjusted.toFixed(3)}px, ${this.current_y_adjusted.toFixed(3)}px, 0)`;
             }
             if(this.screen_width > 900) {
                 content = document.querySelector("#content");
