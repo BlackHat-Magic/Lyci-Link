@@ -31,6 +31,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+COPY --from=assets /build/static/dist/main.css ./static/dist/main.css
 
 EXPOSE 8000
 
