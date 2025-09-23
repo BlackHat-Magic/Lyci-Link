@@ -12,7 +12,7 @@ COPY static/css ./static/css
 
 RUN mkdir -p website/static/dist
 
-RUN npx @tailwind/cli \
+RUN npx @tailwindcss/cli \
     -i ./static/css/main.css \
     -o ./static/dist/main.css \
     --minify
