@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie-edge" />
+    <link
+      rel="icon"
+      type="image/x-ixon"
+      href="{{ url_for('static', filename='images/d20.png') }}"
+    />
+
+    <!-- Tailwind v4 built CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/main.css') }}"
+    />
+
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <title>Lyciberi · Your Favorite Fruit Dove</title>
+  </head>
+
+  <body class="min-h-screen bg-nord-background text-nord-text">
+    <div x-data="main" x-init="init" class="relative">
+      <!-- Reference stroke text (used for measuring in JS) -->
+      <div class="background-container reference">
+        <h1 id="reference" class="outer text-7xl">LyciBeri</h1>
+        <h1 class="inner text-7xl">LyciBeri</h1>
+      </div>
+
+      <!-- Back layers -->
+      <div class="background-black"></div>
+
+      <!-- Animated rotated background text -->
+      <div class="background-container rotated" id="background">
+        <template x-for="i in line_number()">
+          <h1
+            class="outer text-8xl"
+            :style="{
+              top: `${100 * (i - 2)}px`,
+              left: `${(i + 1) * -1 * 85 - (i % 3) * 75}px`,
+            }"
+          >
+            <template x-for="j in repeat_number()">
+              <span>LyciBeri </span>
+            </template>
+          </h1>
+        </template>
+        <template x-for="i in line_number()">
+          <h1
+            class="inner text-8xl"
+            :style="{
+              top: `${100 * (i - 2)}px`,
+              left: `${(i + 1) * -1 * 85 - (i % 3) * 75}px`,
+            }"
+          >
+            <template x-for="j in repeat_number()">
+              <span>LyciBeri </span>
+            </template>
+          </h1>
+        </template>
+      </div>
+
+      <div class="background-shade"></div>
+
+      <!-- Content card -->
+      <div
+        id="content"
+        class="mx-auto my-12 w-full max-w-xl rounded-xl backdrop-blur-lg max-[900px]:my-0 max-[900px]:rounded-none max-[900px]:backdrop-blur-0"
+      >
+        <div
+          class="flex flex-col items-center gap-4 p-6"
+        >
+          <img
+            src="{{ url_for('static', filename='img/lyci.jpg') }}"
+            class="w-1/2 rounded-full my-6"
+            alt="LyciBeri"
+          />
+          <h1 class="text-5xl font-bold text-center">LyciBeri</h1>
+          <p class="text-center mb-8">Your Favorite Fruit Dove</p>
+
+          <!-- Buttons -->
+          <div
+            class="flex w-full flex-col items-center gap-3"
+          >
+            <a
+              class="w-1/2 max-[900px]:w-3/4 font-mono"
+              href="{{ url_for('youtube') }}"
+              target="_blank"
+            >
+              <button
+                type="button"
+                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
+              >
+                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
+                <h6 class="col-span-9 text-lg text-left">YouTube!</h6>
+              </button>
+            </a>
+
+            <a
+              class="w-1/2 max-[900px]:w-3/4 font-mono"
+              href="{{ url_for('twitter') }}"
+              target="_blank"
+            >
+              <button
+                type="button"
+                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
+              >
+                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
+                <h6 class="col-span-9 text-lg text-left">Twitter!</h6>
+              </button>
+            </a>
+
+            <a
+              class="w-1/2 max-[900px]:w-3/4 font-mono"
+              href="{{ url_for('twitch') }}"
+              target="_blank"
+            >
+              <button
+                type="button"
+                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
+              >
+                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
+                <h6 class="col-span-9 text-lg text-left">Twitch!</h6>
+              </button>
+            </a>
+
+            <a
+              class="w-1/2 max-[900px]:w-3/4 font-mono"
+              href="{{ url_for('discord') }}"
+              target="_blank"
+            >
+              <button
+                type="button"
+                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
+              >
+                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
+                <h6 class="col-span-9 text-lg text-left">Discord!</h6>
+              </button>
+            </a>
+
+            <a
+              class="w-1/2 max-[900px]:w-3/4 font-mono"
+              href="{{ url_for('bluesky') }}"
+              target="_blank"
+            >
+              <button
+                type="button"
+                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
+              >
+                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
+                <h6 class="col-span-9 text-lg text-left">Bluesky!</h6>
+              </button>
+            </a>
+
+            <a
+              class="w-1/2 max-[900px]:w-3/4 font-mono"
+              href="{{ url_for('tiktok') }}"
+              target="_blank"
+            >
+              <button
+                type="button"
+                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
+              >
+                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
+                <h6 class="col-span-9 text-lg text-left">TikTok!</h6>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer (hidden under 900px, like before) -->
+    <div
+      class="footer mx-auto my-6 w-full max-w-xl bg-transparent"
+    >
+      <div class="flex items-center justify-center">
+        <span class="text-xs text-nord-subtle">
+          <a
+            href="https://github.com/BlackHat-Magic/Lyci-link"
+            target="_blank"
+            class="hover:text-nord-important"
+            >View Source Code</a
+          >
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
