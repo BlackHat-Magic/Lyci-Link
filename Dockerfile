@@ -6,15 +6,15 @@ WORKDIR /build
 COPY package*.json .
 RUN npm ci
 
-COPY website/templates ./website/templates
-COPY website/static/js ./website/static/js
-COPY website/static/css ./website/static/css
+COPY templates ./templates
+COPY static/js ./static/js
+COPY static/css ./static/css
 
 RUN mkdir -p website/static/dist
 
 RUN npx @tailwind/cli \
-    -i ./website/static/css/main.css \
-    -o ./website/static/dist/main.css \
+    -i ./static/css/main.css \
+    -o ./static/dist/main.css \
     --minify
 
 # python runtime
@@ -31,7 +31,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-COPY --from=assets /build/website/static/dist/main.css ./website/static/dist/main.css
+COPY --from=assets /build/static/dist/main.css ./static/dist/main.css
 
 EXPOSE 8000
 
