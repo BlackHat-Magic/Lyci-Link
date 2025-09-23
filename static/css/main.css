@@ -29,8 +29,8 @@
   --color-lyci-inner: #f5f5e4;
 
   /* Fonts */
-  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Noto Sans Mono", ui-monospace, SFMono-Regular, monospace;
+  /* --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif; */
+  /* --font-mono: "Noto Sans Mono", ui-monospace, SFMono-Regular, monospace; */
 }
 
 /* Custom utilities */
