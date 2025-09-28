@@ -1,197 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie-edge" />
-    <link
-      rel="icon"
-      type="image/x-ixon"
-      href="{{ url_for('static', filename='images/d20.png') }}"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Lyciberi · Your Favorite Fruit Dove</title>
 
-    <!-- Tailwind v4 built CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='dist/main.css') }}"
-    />
+        <link
+            rel="icon"
+            type="image/png"
+            href="{{ url_for('static', filename='img/lyci.jpg') }}"
+        />
 
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-    <title>Lyciberi · Your Favorite Fruit Dove</title>
-  </head>
+        <!-- Tailwind v4 build output (from static/css/main.css) -->
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='dist/main.css') }}"
+        />
 
-  <body class="min-h-screen bg-nord-background text-nord-text">
-    <div x-data="main" x-init="init" class="relative">
-      <!-- Reference stroke text (used for measuring in JS) -->
-      <div class="background-container reference">
-        <h1 id="reference" class="outer text-7xl">LyciBeri</h1>
-        <h1 class="inner text-7xl">LyciBeri</h1>
-      </div>
+        <!-- Parallax logic -->
+        <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <!-- Alpine.js -->
+        <script
+            defer
+            src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
 
-      <!-- Back layers -->
-      <div class="background-black"></div>
+    </head>
 
-      <!-- Animated rotated background text -->
-      <div class="background-container rotated" id="background">
-        <template x-for="i in line_number()">
-          <h1
-            class="outer text-8xl"
-            :style="{
-              top: `${100 * (i - 2)}px`,
-              left: `${(i + 1) * -1 * 85 - (i % 3) * 75}px`,
-            }"
-          >
-            <template x-for="j in repeat_number()">
-              <span>LyciBeri </span>
-            </template>
-          </h1>
-        </template>
-        <template x-for="i in line_number()">
-          <h1
-            class="inner text-8xl"
-            :style="{
-              top: `${100 * (i - 2)}px`,
-              left: `${(i + 1) * -1 * 85 - (i % 3) * 75}px`,
-            }"
-          >
-            <template x-for="j in repeat_number()">
-              <span>LyciBeri </span>
-            </template>
-          </h1>
-        </template>
-      </div>
-
-      <div class="background-shade"></div>
-
-      <!-- Content card -->
-      <div
-        id="content"
-        class="mx-auto my-12 w-full max-w-xl rounded-xl backdrop-blur-lg max-[900px]:my-0 max-[900px]:rounded-none max-[900px]:backdrop-blur-0"
-      >
-        <div
-          class="flex flex-col items-center gap-4 p-6"
-        >
-          <img
-            src="{{ url_for('static', filename='img/lyci.jpg') }}"
-            class="w-1/2 rounded-full my-6"
-            alt="LyciBeri"
-          />
-          <h1 class="text-5xl font-bold text-center">LyciBeri</h1>
-          <p class="text-center mb-8">Your Favorite Fruit Dove</p>
-
-          <!-- Buttons -->
-          <div
-            class="flex w-full flex-col items-center gap-3"
-          >
-            <a
-              class="w-1/2 max-[900px]:w-3/4 font-mono"
-              href="{{ url_for('youtube') }}"
-              target="_blank"
-            >
-              <button
-                type="button"
-                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
-              >
-                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
-                <h6 class="col-span-9 text-lg text-left">YouTube!</h6>
-              </button>
-            </a>
-
-            <a
-              class="w-1/2 max-[900px]:w-3/4 font-mono"
-              href="{{ url_for('twitter') }}"
-              target="_blank"
-            >
-              <button
-                type="button"
-                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
-              >
-                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
-                <h6 class="col-span-9 text-lg text-left">Twitter!</h6>
-              </button>
-            </a>
-
-            <a
-              class="w-1/2 max-[900px]:w-3/4 font-mono"
-              href="{{ url_for('twitch') }}"
-              target="_blank"
-            >
-              <button
-                type="button"
-                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
-              >
-                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
-                <h6 class="col-span-9 text-lg text-left">Twitch!</h6>
-              </button>
-            </a>
-
-            <a
-              class="w-1/2 max-[900px]:w-3/4 font-mono"
-              href="{{ url_for('discord') }}"
-              target="_blank"
-            >
-              <button
-                type="button"
-                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
-              >
-                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
-                <h6 class="col-span-9 text-lg text-left">Discord!</h6>
-              </button>
-            </a>
-
-            <a
-              class="w-1/2 max-[900px]:w-3/4 font-mono"
-              href="{{ url_for('bluesky') }}"
-              target="_blank"
-            >
-              <button
-                type="button"
-                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
-              >
-                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
-                <h6 class="col-span-9 text-lg text-left">Bluesky!</h6>
-              </button>
-            </a>
-
-            <a
-              class="w-1/2 max-[900px]:w-3/4 font-mono"
-              href="{{ url_for('tiktok') }}"
-              target="_blank"
-            >
-              <button
-                type="button"
-                class="loading grid grid-cols-12 w-full border rounded-lg px-4 py-3 text-[#C6E652] bg-nord-inactive border-[#637329] hover:bg-nord-active hover:shadow"
-              >
-                <h6 class="col-span-3 text-lg text-center">&gt;</h6>
-                <h6 class="col-span-9 text-lg text-left">TikTok!</h6>
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer (hidden under 900px, like before) -->
-    <div
-      class="footer mx-auto my-6 w-full max-w-xl bg-transparent"
+    <body
+        class="min-h-[100dvh] bg-white text-[oklch(22%_0.02_135)] antialiased selection:bg-[oklch(85%_0.10_135)] selection:text-[oklch(22%_0.02_135)]"
     >
-      <div class="flex items-center justify-center">
-        <span class="text-xs text-nord-subtle">
-          <a
-            href="https://github.com/BlackHat-Magic/Lyci-link"
-            target="_blank"
-            class="hover:text-nord-important"
-            >View Source Code</a
-          >
-        </span>
-      </div>
-    </div>
-  </body>
+        <div
+            x-data="parallaxPage({ intensity: 16, mobileIntensity: 10 })"
+            x-init="init()"
+            @mousemove="onMouseMove($event)"
+            class="relative min-h-[100dvh] overflow-hidden"
+        >
+            <!-- BACKGROUND -->
+            <div class="pointer-events-none fixed inset-0 z-0">
+                <!-- Layer 1: soft green blobs on a very light base -->
+                <div
+                    id="bg-layer-1"
+                    class="absolute inset-[-5%] will-change-transform"
+                    :style="layerStyle(1)"
+                >
+                    <div class="h-full w-full bg-art-1"></div>
+                </div>
+
+                <!-- Layer 2: subtle grid + noise -->
+                <div
+                    id="bg-layer-2"
+                    class="absolute inset-[-10%] will-change-transform mix-blend-multiply"
+                    :style="layerStyle(2)"
+                >
+                    <div class="h-full w-full bg-art-2 opacity-70"></div>
+                </div>
+
+                <!-- Light vignette for focus -->
+                <div
+                    class="absolute inset-0 bg-[radial-gradient(90%_70%_at_50%_40%,transparent_0%,transparent_55%,rgba(0,0,0,0.06)_80%,rgba(0,0,0,0.12)_100%)]"
+                    aria-hidden="true"
+                ></div>
+            </div>
+
+            <!-- FOREGROUND -->
+            <main
+                class="relative z-10 mx-auto flex min-h-[100dvh] w-full items-center justify-center"
+            >
+                <section
+                    class="w-full h-[100dvh] rounded-none p-6
+                                 bg-white/60 backdrop-blur-xl backdrop-saturate-150
+                                 border border-[oklch(85%_0.04_135_/0.7)]
+                                 shadow-[0_10px_50px_-15px_rgba(0,0,0,0.25)]
+                                 max-sm:px-6 max-sm:py-8
+                                 sm:h-auto sm:max-w-md sm:rounded-3xl sm:p-8"
+                    role="region"
+                    aria-label="Profile and links"
+                >
+                    <!-- Profile -->
+                    <header class="flex flex-col items-center gap-4 text-center">
+                        <img
+                            src="{{ url_for('static', filename='img/lyci.jpg') }}"
+                            alt="LyciBeri"
+                            class="size-28 rounded-full object-cover ring-2 ring-[oklch(80%_0.06_135_/0.6)]"
+                        />
+
+                        <div class="space-y-1">
+                            <h1 class="text-balance text-3xl font-semibold">
+                                LyciBeri
+                            </h1>
+                            <p
+                                class="text-pretty text-sm/6 text-[oklch(35%_0.02_135_/0.85)]"
+                            >
+                                Your Favorite Fruit Dove
+                            </p>
+                        </div>
+                    </header>
+
+                    <!-- Links (uniform green accent, left-to-right fill) -->
+                    <div class="mt-8 space-y-3">
+                        {% for item in [
+                            {'label': 'YouTube', 'href': url_for('youtube'), 'icon': 'yt'},
+                            {'label': 'Twitter', 'href': url_for('twitter'), 'icon': 'x'},
+                            {'label': 'Twitch', 'href': url_for('twitch'), 'icon': 'twitch'},
+                            {'label': 'Discord', 'href': url_for('discord'), 'icon': 'discord'},
+                            {'label': 'Bluesky', 'href': url_for('bluesky'), 'icon': 'bsky'},
+                            {'label': 'TikTok', 'href': url_for('tiktok'), 'icon': 'tiktok'}
+                        ] %}
+                        <a
+                            href="{{ item.href }}"
+                            target="_blank"
+                            rel="me noopener"
+                            class="group relative block w-full overflow-hidden rounded-2xl
+                                         border border-[oklch(55%_0.09_135_/0.9)]
+                                         px-4 py-3
+                                         transition-transform duration-150
+                                         hover:-translate-y-0.5 focus:-translate-y-0.5
+                                         focus:outline-none focus-visible:ring-2
+                                         focus-visible:ring-[oklch(70%_0.10_135_/0.7)]
+                                         active:translate-y-0"
+                        >
+                            <span
+                                class="pointer-events-none absolute inset-0 w-0
+                                             bg-[oklch(85%_0.10_135_/0.9)]
+                                             transition-[width] duration-500 ease-out
+                                             group-hover:w-full group-focus-visible:w-full"
+                                aria-hidden="true"
+                            ></span>
+                            <span
+                                class="relative z-[1] flex items-center gap-3 text-[oklch(22%_0.02_135)]"
+                            >
+                                {% if item.icon == 'twitch' %}
+                                <svg class="size-5 text-[oklch(55%_0.12_135)]" fill="currentColor" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <title>Twitch</title>
+                                        <path d="M26.711 14.929l-4.284 4.284h-4.285l-3.749 3.749v-3.749h-4.82v-16.067h17.138zM8.502 1.004l-5.356 5.356v19.279h6.427v5.356l5.356-5.356h4.284l9.641-9.64v-14.996zM21.356 6.895h2.142v6.427h-2.142zM15.464 6.895h2.143v6.427h-2.144z"></path>
+                                    </g>
+                                </svg>
+                                {% elif item.icon == 'x' %}
+                                <svg class="size-5 text-[oklch(55%_0.12_135)]" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g id="7935ec95c421cee6d86eb22ecd12f847"></g>
+                                        <path style="display: inline;" d="M459.186,151.787c0.203,4.501,0.305,9.023,0.305,13.565 c0,138.542-105.461,298.285-298.274,298.285c-59.209,0-114.322-17.357-160.716-47.104c8.212,0.973,16.546,1.47,25.012,1.47 c49.121,0,94.318-16.759,130.209-44.884c-45.887-0.841-84.596-31.154-97.938-72.804c6.408,1.227,12.968,1.886,19.73,1.886 c9.55,0,18.816-1.287,27.617-3.68c-47.955-9.633-84.1-52.001-84.1-102.795c0-0.446,0-0.882,0.011-1.318 c14.133,7.847,30.294,12.562,47.488,13.109c-28.134-18.796-46.637-50.885-46.637-87.262c0-19.212,5.16-37.218,14.193-52.7 c51.707,63.426,128.941,105.156,216.072,109.536c-1.784-7.675-2.718-15.674-2.718-23.896c0-57.891,46.941-104.832,104.832-104.832 c30.173,0,57.404,12.734,76.525,33.102c23.887-4.694,46.313-13.423,66.569-25.438c-7.827,24.485-24.434,45.025-46.089,58.002 c21.209-2.535,41.426-8.171,60.222-16.505C497.448,118.542,479.666,137.004,459.186,151.787z"></path>
+                                    </g>
+                                </svg>
+                                {% elif item.icon == 'discord' %}
+                                <svg class="size-5 text-[oklch(55%_0.12_135)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M18.59 5.88997C17.36 5.31997 16.05 4.89997 14.67 4.65997C14.5 4.95997 14.3 5.36997 14.17 5.69997C12.71 5.47997 11.26 5.47997 9.83001 5.69997C9.69001 5.36997 9.49001 4.95997 9.32001 4.65997C7.94001 4.89997 6.63001 5.31997 5.40001 5.88997C2.92001 9.62997 2.25001 13.28 2.58001 16.87C4.23001 18.1 5.82001 18.84 7.39001 19.33C7.78001 18.8 8.12001 18.23 8.42001 17.64C7.85001 17.43 7.31001 17.16 6.80001 16.85C6.94001 16.75 7.07001 16.64 7.20001 16.54C10.33 18 13.72 18 16.81 16.54C16.94 16.65 17.07 16.75 17.21 16.85C16.7 17.16 16.15 17.42 15.59 17.64C15.89 18.23 16.23 18.8 16.62 19.33C18.19 18.84 19.79 18.1 21.43 16.87C21.82 12.7 20.76 9.08997 18.61 5.88997H18.59ZM8.84001 14.67C7.90001 14.67 7.13001 13.8 7.13001 12.73C7.13001 11.66 7.88001 10.79 8.84001 10.79C9.80001 10.79 10.56 11.66 10.55 12.73C10.55 13.79 9.80001 14.67 8.84001 14.67ZM15.15 14.67C14.21 14.67 13.44 13.8 13.44 12.73C13.44 11.66 14.19 10.79 15.15 10.79C16.11 10.79 16.87 11.66 16.86 12.73C16.86 13.79 16.11 14.67 15.15 14.67Z" fill="currentColor"></path> 
+                                    </g>
+                                </svg>
+                                {% elif item.icon == 'yt' %}
+                                <svg class="size-5 text-[oklch(55%_0.12_135)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M19.67 8.14002C19.5811 7.7973 19.4028 7.48433 19.1533 7.23309C18.9038 6.98185 18.5921 6.80134 18.25 6.71001C16.176 6.4654 14.0883 6.35517 12 6.38001C9.91174 6.35517 7.82405 6.4654 5.75001 6.71001C5.40793 6.80134 5.09622 6.98185 4.84674 7.23309C4.59725 7.48433 4.41894 7.7973 4.33001 8.14002C4.10282 9.41396 3.99236 10.706 4.00001 12C3.99198 13.3007 4.10244 14.5994 4.33001 15.88C4.42355 16.2172 4.60391 16.5239 4.85309 16.7696C5.10226 17.0153 5.41153 17.1913 5.75001 17.28C7.82405 17.5246 9.91174 17.6349 12 17.61C14.0883 17.6349 16.176 17.5246 18.25 17.28C18.5885 17.1913 18.8978 17.0153 19.1469 16.7696C19.3961 16.5239 19.5765 16.2172 19.67 15.88C19.8976 14.5994 20.008 13.3007 20 12C20.0077 10.706 19.8972 9.41396 19.67 8.14002ZM10.36 14.39V9.63001L14.55 12L10.36 14.38V14.39Z" fill="currentColor"></path>
+                                    </g>
+                                </svg>
+                                {% elif item.icon == 'bsky' %}
+                                <svg class="size-5 text-[oklch(55%_0.12_135)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 -3.268 64 68.414">
+                                    <path fill="currentColor" d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805zm36.254 0C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745z"/>
+                                </svg>
+                                {% elif item.icon == 'tiktok' %}
+                                <svg class="size-5 text-[oklch(55%_0.12_135)]" fill="currentColor" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"></path>
+                                    </g>
+                                </svg>
+                                {% endif %}
+                                <span class="font-medium">{{ item.label }}</span>
+                            </span>
+                        </a>
+                        {% endfor %}
+                    </div>
+
+                    <!-- iOS motion permission prompt (shown only if needed) -->
+                    <div
+                        x-show="needsPermission"
+                        x-transition.opacity
+                        class="mt-6 rounded-xl border border-[oklch(85%_0.04_135_/0.8)]
+                                     bg-white/50 p-4 text-sm"
+                    >
+                        <p>Enable motion access to make the background react to device movement.</p>
+                        <button
+                            @click="requestPermission()"
+                            type="button"
+                            class="mt-3 inline-flex items-center gap-2 rounded-lg
+                                         border border-[oklch(70%_0.09_135_/0.9)]
+                                         px-3 py-1.5 text-sm font-medium
+                                         text-[oklch(22%_0.02_135)]
+                                         transition-colors hover:bg-[oklch(88%_0.10_135_/0.6)]
+                                         focus:outline-none focus-visible:ring-2
+                                         focus-visible:ring-[oklch(70%_0.10_135_/0.7)]"
+                        >
+                            Enable motion
+                        </button>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mx-auto my-6 w-full max-w-md text-center">
+            <a
+                href="https://github.com/BlackHat-Magic/Lyci-link"
+                target="_blank"
+                class="text-xs text-[oklch(40%_0.02_135_/0.9)] hover:text-[oklch(22%_0.02_135)]"
+                >View Source Code</a
+            >
+        </footer>
+    </body>
 </html>
