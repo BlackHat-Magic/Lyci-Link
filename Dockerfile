@@ -1,9 +1,9 @@
-FROM node:23-alpine3.22 AS builder
+FROM oven/bun:1-alpine AS builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 COPY static/ ./static/
-RUN npx @tailwindcss/cli -i ./static/css/main.css -o ./static/dist/main.css --minify
+RUN bunx @tailwindcss/cli -i ./static/css/main.css -o ./static/dist/main.css --minify
 
 FROM nginx:1.31.0-alpine
 COPY --from=builder /app/static /usr/share/nginx/html/static
