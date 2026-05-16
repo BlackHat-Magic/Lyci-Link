@@ -1,7 +1,5 @@
-.dockerignore
-README.md
-LICENSE.md
 .git
 .gitignore
-env/
+README.md
+LICENSE.md
 node_modules
