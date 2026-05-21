@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lyci-link",
+  "compatibility_date": "2026-05-21",
+  "observability": {
+    "enabled": true
+  },
+  "build": {
+    "command": "bunx @tailwindcss/cli -i static/css/main.css -o static/dist/main.css --minify"
+  },
+  "assets": {
+    "directory": "static"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
